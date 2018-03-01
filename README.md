@@ -1,5 +1,9 @@
 # little pjax
 
+[![CC0-1.0](https://img.shields.io/badge/license-CC0-green.svg?style=flat-square)](http://creativecommons.org/publicdomain/zero/1.0/)
+[![npm version](https://img.shields.io/npm/v/little-pjax.svg?style=flat-square)](https://www.npmjs.com/package/little-pjax)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 > pushState + ajax (fetch) = pjax
 
 A simple, small and modern implementation of pjax
