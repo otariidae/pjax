@@ -1,6 +1,6 @@
 {
   "name": "little-pjax",
-  "description": "A simple, small amd modern implementation of pjax",
+  "description": "A simple, small and modern implementation of pjax",
   "version": "0.1.0",
   "author": "otariidae",
   "main": "dist/cjs/index.js",

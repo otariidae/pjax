@@ -2,7 +2,7 @@
 
 > pushState + ajax (fetch) = pjax
 
-A simple, small amd modern implementation of pjax
+A simple, small and modern implementation of pjax
 
 ## Prior arts
 
