@@ -1,7 +1,7 @@
 {
   "name": "little-pjax",
   "description": "A simple, small amd modern implementation of pjax",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "otariidae",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -47,4 +47,3 @@
     "prettier": "^1.10.2"
   }
 }
-
