@@ -1,0 +1,50 @@
+{
+  "name": "little-pjax",
+  "description": "A simple, small amd modern implementation of pjax",
+  "version": "0.0.1",
+  "author": "otariidae",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "license": "CC0-1.0",
+  "homepage": "https://github.com/otariidae/pjax",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/otariidae/pjax.git"
+  },
+  "bugs": {
+    "url": "https://github.com/otariidae/pjax/issues"
+  },
+  "scripts": {
+    "prelint": "prettier --write src/*.js lib/*.js test/*.js",
+    "lint": "eslint --fix src/*.js lib/*.js",
+    "check": "flow check",
+    "pretest": "npm run build:cjs",
+    "test": "kocha test/*.js",
+    "prebuild": "rm -rf dist",
+    "build": "run-p build:*",
+    "build:cjs": "cross-env NODE_ENV=cjs babel src --out-dir dist/cjs",
+    "build:esm": "babel src --out-dir dist/esm",
+    "build:flow": "flow gen-flow-files src --out-dir dist"
+  },
+  "dependencies": {
+    "event-target-shim": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.40",
+    "@babel/preset-flow": "^7.0.0-beta.40",
+    "babel-eslint": "^8.2.2",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.18.0",
+    "flow-bin": "^0.66.0",
+    "jsdom": "^11.6.2",
+    "kocha": "^1.9.1",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.10.2"
+  }
+}
+
