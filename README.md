@@ -42,11 +42,14 @@ If `href` of a target anchor element is not `Same Origin`, there will be ignored
 
 `<script>` in a container element will be loaded after a container element was replaced.
 
+The pages visited before are cached inside PJAX.\
+When reloading a page, cache are deleted.
+
 PJAX will not work:
 
 * with Shift + click, Ctrl + click, Alt + click
 * if a `click` event was prevented before
-* if the new URL path is same with the current one
+* if the new URL is same with the current one
 
 PJAX does not support:
 
