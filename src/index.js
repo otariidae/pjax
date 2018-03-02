@@ -7,6 +7,7 @@ import {
   isSamePath,
   isSameParams,
   isModifiedClick,
+  dehashURL,
   fetchHTML,
   executeScripts
 } from "./util";
@@ -14,11 +15,13 @@ import {
 export default class PJAX extends EventTarget {
   area: string;
   $area: Element;
+  cache: Map<string, Document>;
   target: string;
 
   constructor(area: string = "body", target: string = "a[href]:not([target])") {
     super();
     this.area = area;
+    this.cache = new Map();
     this.target = target;
     const $area = document.querySelector(this.area);
 
@@ -46,6 +49,15 @@ export default class PJAX extends EventTarget {
       element.addEventListener("click", this.onAnchorClick.bind(this), false);
     }
   }
+  async loadDocument(url: string): Promise<Document> {
+    const cache = this.cache.get(url);
+    if (cache) {
+      return cache;
+    }
+    const newDocument = await fetchHTML(url);
+    this.cache.set(url, newDocument);
+    return newDocument;
+  }
   async load(url: string): Promise<void> {
     const canceled = !this.dispatchEvent(
       new CustomEvent("beforeunload", {
@@ -57,7 +69,8 @@ export default class PJAX extends EventTarget {
       return;
     }
 
-    const newDocument = await fetchHTML(url);
+    const newDocument = (await this.loadDocument(url)).cloneNode(true);
+
     const newRoot = newDocument.querySelector(this.area);
 
     if (newRoot === null) {
@@ -104,7 +117,7 @@ export default class PJAX extends EventTarget {
 
     this.dispatchEvent(new CustomEvent("loadstart"));
 
-    const newURL = element.href;
+    const newURL = dehashURL(element);
     await this.load(newURL);
     history.pushState(null, "", newURL);
 

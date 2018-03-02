@@ -2,6 +2,7 @@ const {
   isSameOrigin,
   isSamePath,
   isSameParams,
+  dehashURL,
   createEqualElement
 } = require("../dist/cjs/util.js");
 const t = require("assert");
@@ -163,6 +164,25 @@ describe("isSameParams", () => {
         new URL("http://www.example.com/?p=1%202")
       )
     );
+  });
+});
+
+describe("dehashURL", () => {
+  const { window } = new JSDOM("");
+  const { document } = window;
+
+  it("no path", () => {
+    const a = document.createElement("a");
+    a.href = "http://www.example.com/#hash";
+
+    t.equal(dehashURL(a), "http://www.example.com/");
+    t.notEqual(dehashURL(a), "http://www.example.com");
+  });
+  it("path + filename", () => {
+    const a = document.createElement("a");
+    a.href = "http://www.example.com/path/to/index.html#hash";
+
+    t.equal(dehashURL(a), "http://www.example.com/path/to/index.html");
   });
 });
 
