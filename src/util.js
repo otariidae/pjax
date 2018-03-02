@@ -29,6 +29,9 @@ export const fetchHTML = async (url: string): Promise<Document> => {
   return parser.parseFromString(html, "text/html");
 };
 
+export const dehashURL = (url: URLLike) =>
+  url.origin + url.pathname + url.search;
+
 // Ref: https://dom.spec.whatwg.org/#concept-node-equals
 export const createEqualElement = (element: Element): Element => {
   const copy = document.createElementNS(
