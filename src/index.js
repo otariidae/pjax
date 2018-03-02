@@ -14,8 +14,9 @@ import {
 export default class PJAX extends EventTarget {
   area: string;
   $area: Element;
+  target: string;
 
-  constructor(area: string = "body", target = "a[href]:not([target])") {
+  constructor(area: string = "body", target: string = "a[href]:not([target])") {
     super();
     this.area = area;
     this.target = target;

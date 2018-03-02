@@ -12,8 +12,10 @@ export const isSameParams = (a: URLLike, b: URLLike): boolean => {
   const aURLParams = new URLSearchParams(a.search);
   const bURLParams = new URLSearchParams(b.search);
 
-  aURLParams.sort();
-  bURLParams.sort();
+  // URLSearchParams.sort() is missing.
+
+  (aURLParams: any).sort();
+  (bURLParams: any).sort();
 
   return aURLParams.toString() === bURLParams.toString();
 };
