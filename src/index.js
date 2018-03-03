@@ -98,7 +98,7 @@ export default class PJAX extends EventTarget {
     executeScripts(newRoot);
   }
   async onAnchorClick(e: MouseEvent): Promise<void> {
-    const element = e.target;
+    const element = e.currentTarget;
 
     if (e.defaultPrevented) {
       return;
