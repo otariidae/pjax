@@ -53,7 +53,8 @@ PJAX will not work:
 
 PJAX does not support:
 
-* other elements in `<head>` such as `<meta name="twitter:card">`, `<script>`
+* Multiple container elements
+* Other elements in `<head>` such as `<meta name="twitter:card">`, `<script>`
 
 You can use the `contentLoaded` event to hook.
 
@@ -100,6 +101,11 @@ Cancelable.
 Fired before fetching new resouces.
 
 When canceled, PJAX will stop loading and will not fire `unload` and `contentLoaded`.
+
+##### Properties
+
+`contentLoadedEvent.detail.url`: `string`\
+a URL of the new page.
 
 #### unload
 
