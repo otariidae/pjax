@@ -61,7 +61,10 @@ export default class PJAX extends EventTarget {
   async load(url: string): Promise<void> {
     const canceled = !this.dispatchEvent(
       new CustomEvent("beforeunload", {
-        cancelable: true
+        cancelable: true,
+        detail: {
+          url: url
+        }
       })
     );
 
