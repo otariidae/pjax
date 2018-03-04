@@ -38,12 +38,12 @@ PJAX will replace:
 * URL
 
 Target anchor elements are selected via the second argument from a container element.\
-If `href` of a target anchor element is not `Same Origin`, there will be ignored.
+If `href` of a target anchor element is not same Origin, it will be ignored.
 
-`<script>` in a container element will be loaded after a container element was replaced.
+`<script>` in a container element will be loaded after the element is replaced.
 
 The pages visited before are cached inside PJAX.\
-When reloading a page, cache are deleted.
+Cache stores page data for one session. When reloading a page, it gets cleared.
 
 PJAX will not work:
 
@@ -70,10 +70,10 @@ const pjax = new PJAX(container, target);
 
 ##### Options
 
-`container`: `string` = `body`\
+container: `string` = `body`\
 A group of selectors of a container element.
 
-`target` : `string` = `a[href]:not([target])`\
+target : `string` = `a[href]:not([target])`\
 A group of selectors of target `HTMLAnchorElement`.
 
 ### Methods
