@@ -45,18 +45,21 @@ If `href` of a target anchor element is not same Origin, it will be ignored.
 The pages visited before are cached inside PJAX.\
 Cache stores page data for one session. When reloading a page, it gets cleared.
 
-PJAX will not work:
+PJAX will NOT work:
 
 * with Shift + click, Ctrl + click, Alt + click
 * if a `click` event was prevented before
 * if the new URL is same with the current one
 
-PJAX does not support:
+PJAX does NOT support:
 
 * Multiple container elements
 * Other elements in `<head>` such as `<meta name="twitter:card">`, `<script>`
+* Inheritance of element's event handlers to the new elements
 
-You can use the `contentLoaded` event to hook.
+You have to recall `element.addEventListener()` after `contentLoaded` or `load` event.
+
+You can use the `contentLoaded` event to hook to sync `<meta name="twitter:card">`.
 
 ### API
 
