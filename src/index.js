@@ -1,7 +1,5 @@
 // @flow
 
-import { EventTarget } from "event-target-shim";
-
 import {
   isSameOrigin,
   isSamePath,

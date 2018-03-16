@@ -18,8 +18,8 @@
     "url": "https://github.com/otariidae/pjax/issues"
   },
   "scripts": {
-    "prelint": "prettier --write src/*.js lib/*.js test/*.js",
-    "lint": "eslint --fix src/*.js lib/*.js",
+    "prelint": "prettier --write src/*.js test/*.js",
+    "lint": "eslint --fix src/*.js",
     "check": "flow check",
     "pretest": "npm run build:cjs",
     "test": "kocha test/*.js",
@@ -29,9 +29,7 @@
     "build:esm": "babel src --out-dir dist/esm",
     "build:flow": "flow gen-flow-files src --out-dir dist"
   },
-  "dependencies": {
-    "event-target-shim": "^3.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.40",
     "@babel/core": "^7.0.0-beta.40",
