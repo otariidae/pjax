@@ -1,6 +1,8 @@
 # Changelog
 
-## [0.2.0] - 2018-03-03
+## [0.2.0] UNPUBLISHED - 2018-03-03
+
+unpublished due to a Git issue.
 
 ### Added
 
