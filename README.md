@@ -65,7 +65,7 @@ You can use the `contentLoaded` event to hook to sync `<meta name="twitter:card"
 
 #### PJAX()
 
-`EventTarget` (shim) <- `PJAX`
+`PJAX < EventTarget`
 
 ```js
 const pjax = new PJAX(container, target);
