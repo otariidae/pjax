@@ -5,7 +5,7 @@ const {
   dehashURL,
   createEqualElement
 } = require("../dist/cjs/util.js");
-const t = require("assert");
+const t = require("assert").strict;
 const { URL, URLSearchParams } = require("url");
 const { describe, it, before, after } = require("kocha");
 const { JSDOM } = require("jsdom");
@@ -20,22 +20,22 @@ describe("isSameOrigin", () => {
     );
   });
   it("defferent subdmain: not same origin", () => {
-    t.ifError(
-      isSameOrigin(
+    t.ok(
+      !isSameOrigin(
         new URL("http://www.exemple.com/"),
         new URL("http://blog.exemple.com/")
       )
     );
-    t.ifError(
-      isSameOrigin(
+    t.ok(
+      !isSameOrigin(
         new URL("http://www.exemple.com/"),
         new URL("http://exemple.com/")
       )
     );
   });
   it("http vs https: not same origin", () => {
-    t.ifError(
-      isSameOrigin(
+    t.ok(
+      !isSameOrigin(
         new URL("http://www.exemple.com/"),
         new URL("https://www.exemple.com/")
       )
@@ -66,8 +66,8 @@ describe("isSameOrigin", () => {
     );
   });
   it("specified 81 port vs unspecfied port: not same origin", () => {
-    t.ifError(
-      isSameOrigin(
+    t.ok(
+      !isSameOrigin(
         new URL("http://www.exemple.com/"),
         new URL("http://www.exemple.com:81/")
       )
@@ -100,16 +100,16 @@ describe("isSamePath", () => {
     );
   });
   it("not same path", () => {
-    t.ifError(
-      isSamePath(
+    t.ok(
+      !isSamePath(
         new URL("http://www.exemple.com/path/to/index.html"),
         new URL("http://www.exemple.com/path/to/not/same/index.html")
       )
     );
   });
   it("not same file", () => {
-    t.ifError(
-      isSamePath(
+    t.ok(
+      !isSamePath(
         new URL("http://www.exemple.com/path/to/index.html"),
         new URL("http://www.exemple.com/path/to/about.html")
       )
@@ -142,16 +142,16 @@ describe("isSameParams", () => {
     );
   });
   it("not same query", () => {
-    t.ifError(
-      isSameParams(
+    t.ok(
+      !isSameParams(
         new URL("http://www.example.com/?p=1"),
         new URL("http://www.example.com/?p=2")
       )
     );
   });
   it("not same length", () => {
-    t.ifError(
-      isSameParams(
+    t.ok(
+      !isSameParams(
         new URL("http://www.example.com/?p=1"),
         new URL("http://www.example.com/?p=1&q=a")
       )
@@ -198,7 +198,7 @@ describe("createEqualElement", () => {
     t.ok(disabledScript.isEqualNode(copiedScript));
   });
   it("not same", () => {
-    t.ifError(disabledScript.isSameNode(copiedScript));
+    t.ok(!disabledScript.isSameNode(copiedScript));
   });
 
   delete global.document;
