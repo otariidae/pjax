@@ -8,7 +8,7 @@ import {
   dehashURL,
   fetchHTML,
   executeScripts
-} from "./util";
+} from "./util.js";
 
 export default class PJAX extends EventTarget {
   area: string;
