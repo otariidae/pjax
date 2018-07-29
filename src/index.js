@@ -98,19 +98,13 @@ export default class PJAX extends EventTarget {
   async onAnchorClick(e: MouseEvent): Promise<void> {
     const element = e.currentTarget;
 
-    if (e.defaultPrevented) {
-      return;
-    }
-    if (isModifiedClick(e)) {
-      return;
-    }
-    if (!(element instanceof HTMLAnchorElement)) {
-      return;
-    }
-    if (!isSameOrigin(element, location)) {
-      return;
-    }
-    if (isSamePath(element, location) && isSameParams(element, location)) {
+    if (
+      e.defaultPrevented ||
+      isModifiedClick(e) ||
+      !(element instanceof HTMLAnchorElement) ||
+      !isSameOrigin(element, location) ||
+      (isSamePath(element, location) && isSameParams(element, location))
+    ) {
       return;
     }
 
