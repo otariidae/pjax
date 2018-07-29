@@ -21,7 +21,7 @@ export const isSameParams = (a: URLLike, b: URLLike): boolean => {
 };
 
 export const isModifiedClick = (e: MouseEvent): boolean =>
-  Boolean(e.shiftKey || e.ctrlKey || e.altKey);
+  e.shiftKey || e.ctrlKey || e.altKey;
 
 export const fetchHTML = async (url: string): Promise<Document> => {
   const html = await fetch(url).then(res => res.text());
