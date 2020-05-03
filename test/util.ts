@@ -1,14 +1,12 @@
-const {
+import {
   isSameOrigin,
   isSamePath,
   isSameParams,
   dehashURL,
   createEqualElement
-} = require("../dist/cjs/util.js");
-const t = require("assert").strict;
-const { URL, URLSearchParams } = require("url");
-const { describe, it, before, after } = require("kocha");
-const { JSDOM } = require("jsdom");
+} from "../src/util";
+import { strict as t } from "assert";
+import { JSDOM } from "jsdom";
 
 describe("isSameOrigin", () => {
   it("same origin", () => {
@@ -76,13 +74,6 @@ describe("isSameOrigin", () => {
 });
 
 describe("isSamePath", () => {
-  before(() => {
-    global.URLSearchParams = URLSearchParams;
-  });
-  after(() => {
-    delete global.URLSearchParams;
-  });
-
   it("same path", () => {
     t.ok(
       isSamePath(
@@ -118,13 +109,6 @@ describe("isSamePath", () => {
 });
 
 describe("isSameParams", () => {
-  before(() => {
-    global.URLSearchParams = URLSearchParams;
-  });
-  after(() => {
-    delete global.URLSearchParams;
-  });
-
   it("same query", () => {
     t.ok(
       isSameParams(
@@ -188,6 +172,7 @@ describe("dehashURL", () => {
 
 describe("createEqualElement", () => {
   const { window } = new JSDOM("");
+  // @ts-ignore
   global.document = window.document;
 
   const disabledScript = window.document.createElement("script");
@@ -201,5 +186,6 @@ describe("createEqualElement", () => {
     t.ok(!disabledScript.isSameNode(copiedScript));
   });
 
+  // @ts-ignore
   delete global.document;
 });

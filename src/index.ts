@@ -1,5 +1,3 @@
-// @flow
-
 import {
   isSameOrigin,
   isSamePath,
@@ -8,7 +6,7 @@ import {
   dehashURL,
   fetchHTML,
   executeScripts
-} from "./util.js";
+} from "./util";
 
 export default class PJAX extends EventTarget {
   area: string;
@@ -16,7 +14,7 @@ export default class PJAX extends EventTarget {
   cache: Map<string, Document>;
   target: string;
 
-  constructor(area: string = "body", target: string = "a[href]:not([target])") {
+  constructor(area = "body", target = "a[href]:not([target])") {
     super();
     this.area = area;
     this.cache = new Map();
@@ -33,18 +31,22 @@ export default class PJAX extends EventTarget {
 
     window.addEventListener(
       "popstate",
-      async () => {
-        this.dispatchEvent(new CustomEvent("loadstart"));
-        await this.load(location.href);
-        this.dispatchEvent(new CustomEvent("loadend"));
+      () => {
+        this.onPopState();
       },
       false
     );
   }
   initTargetHandler(): void {
-    const elements = document.querySelectorAll(this.target);
+    const elements = document.querySelectorAll<HTMLElement>(this.target);
     for (const element of elements) {
-      element.addEventListener("click", this.onAnchorClick.bind(this), false);
+      element.addEventListener(
+        "click",
+        e => {
+          this.onAnchorClick(e);
+        },
+        false
+      );
     }
   }
   async loadDocument(url: string): Promise<Document> {
@@ -70,7 +72,9 @@ export default class PJAX extends EventTarget {
       return;
     }
 
-    const newDocument = (await this.loadDocument(url)).cloneNode(true);
+    const newDocument = (await this.loadDocument(url)).cloneNode(
+      true
+    ) as Document;
 
     const newRoot = newDocument.querySelector(this.area);
 
@@ -116,6 +120,11 @@ export default class PJAX extends EventTarget {
     await this.load(newURL);
     history.pushState(null, "", newURL);
 
+    this.dispatchEvent(new CustomEvent("loadend"));
+  }
+  async onPopState(): Promise<void> {
+    this.dispatchEvent(new CustomEvent("loadstart"));
+    await this.load(location.href);
     this.dispatchEvent(new CustomEvent("loadend"));
   }
 }
