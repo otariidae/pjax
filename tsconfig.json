@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "sourceMap": true,
+    "declaration": true,
+    "pretty": true,
+    "strict": true,
+    "newLine": "lf",
+    "outDir": "dist/cjs"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,5 +1,3 @@
-// @flow
-
 type URLLike = HTMLAnchorElement | URL | Location;
 
 export const isSameOrigin = (a: URLLike, b: URLLike): boolean =>
@@ -12,10 +10,8 @@ export const isSameParams = (a: URLLike, b: URLLike): boolean => {
   const aURLParams = new URLSearchParams(a.search);
   const bURLParams = new URLSearchParams(b.search);
 
-  // URLSearchParams.sort() is missing.
-
-  (aURLParams: any).sort();
-  (bURLParams: any).sort();
+  aURLParams.sort();
+  bURLParams.sort();
 
   return aURLParams.toString() === bURLParams.toString();
 };
@@ -29,7 +25,7 @@ export const fetchHTML = async (url: string): Promise<Document> => {
   return parser.parseFromString(html, "text/html");
 };
 
-export const dehashURL = (url: URLLike) =>
+export const dehashURL = (url: URLLike): string =>
   url.origin + url.pathname + url.search;
 
 // Ref: https://dom.spec.whatwg.org/#concept-node-equals
