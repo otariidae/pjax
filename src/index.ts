@@ -5,7 +5,7 @@ import {
   isModifiedClick,
   dehashURL,
   fetchHTML,
-  executeScripts
+  executeScripts,
 } from "./util";
 
 export default class PJAX extends EventTarget {
@@ -42,7 +42,7 @@ export default class PJAX extends EventTarget {
     for (const element of elements) {
       element.addEventListener(
         "click",
-        e => {
+        (e) => {
           this.onAnchorClick(e);
         },
         false
@@ -63,8 +63,8 @@ export default class PJAX extends EventTarget {
       new CustomEvent("beforeunload", {
         cancelable: true,
         detail: {
-          url: url
-        }
+          url: url,
+        },
       })
     );
 
@@ -91,8 +91,8 @@ export default class PJAX extends EventTarget {
     this.dispatchEvent(
       new CustomEvent("contentLoaed", {
         detail: {
-          document: newDocument
-        }
+          document: newDocument,
+        },
       })
     );
 

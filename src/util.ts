@@ -20,7 +20,7 @@ export const isModifiedClick = (e: MouseEvent): boolean =>
   e.shiftKey || e.ctrlKey || e.altKey;
 
 export const fetchHTML = async (url: string): Promise<Document> => {
-  const html = await fetch(url).then(res => res.text());
+  const html = await fetch(url).then((res) => res.text());
   const parser = new DOMParser();
   return parser.parseFromString(html, "text/html");
 };

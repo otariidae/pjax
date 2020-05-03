@@ -3,7 +3,7 @@ import {
   isSamePath,
   isSameParams,
   dehashURL,
-  createEqualElement
+  createEqualElement,
 } from "../src/util";
 import { strict as t } from "assert";
 import { JSDOM } from "jsdom";
