@@ -10,10 +10,10 @@ A simple, small and modern implementation of pjax
 
 ## Prior arts
 
-* [pjax-api](https://www.npmjs.com/package/pjax-api): A full-featured pjax written in TypeScript
-* [barba.js](https://www.npmjs.com/package/barba.js): A library that provides smooth transition
-* [jquery-pjax](https://www.npmjs.com/package/jquery-pjax): A jQuery plugin for pjax
-* [pjax](https://www.npmjs.com/package/pjax): A standalone pjax
+- [pjax-api](https://www.npmjs.com/package/pjax-api): A full-featured pjax written in TypeScript
+- [barba.js](https://www.npmjs.com/package/barba.js): A library that provides smooth transition
+- [jquery-pjax](https://www.npmjs.com/package/jquery-pjax): A jQuery plugin for pjax
+- [pjax](https://www.npmjs.com/package/pjax): A standalone pjax
 
 ## Install
 
@@ -28,14 +28,14 @@ import PJAX from "little-pjax";
 
 const pjax = new PJAX("#pjax-root", "a[href]:not[target]");
 
-pjax.addEventListener("loadend", e => console.log("finish loading"), false);
+pjax.addEventListener("loadend", (e) => console.log("finish loading"), false);
 ```
 
 PJAX will replace:
 
-* `document.title`
-* A container element
-* URL
+- `document.title`
+- A container element
+- URL
 
 Target anchor elements are selected via the second argument from a container element.\
 If `href` of a target anchor element is not same Origin, it will be ignored.
@@ -47,15 +47,15 @@ Cache stores page data for one session. When reloading a page, it gets cleared.
 
 PJAX will NOT work:
 
-* with Shift + click, Ctrl + click, Alt + click
-* if a `click` event was prevented before
-* if the new URL is same with the current one
+- with Shift + click, Ctrl + click, Alt + click
+- if a `click` event was prevented before
+- if the new URL is same with the current one
 
 PJAX does NOT support:
 
-* Multiple container elements
-* Other elements in `<head>` such as `<meta name="twitter:card">`, `<script>`
-* Inheritance of element's event handlers to the new elements
+- Multiple container elements
+- Other elements in `<head>` such as `<meta name="twitter:card">`, `<script>`
+- Inheritance of element's event handlers to the new elements
 
 You have to recall `element.addEventListener()` after `contentLoaded` or `load` event.
 
@@ -126,7 +126,7 @@ Fired after replacing a container element and before executing JavaScript.
 You can use it, for example, to sync `<meta name="twitter:card">`.
 
 ```js
-pjax.addEventListener("contentLoaded", event => {
+pjax.addEventListener("contentLoaded", (event) => {
   const newDocument = event.detail.document;
   const oldCard = document.head.querySelector('meta[name="twitter:card"]');
   const newCard = newDocument.head.querySelector('meta[name="twitter:card"]');

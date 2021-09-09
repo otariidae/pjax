@@ -4,11 +4,11 @@
 
 ### BREAKING CHANGE
 
-* Drop `module` in `package.json`
+- Drop `module` in `package.json`
 
 ### Changed
 
-* Rewritten in TypeScript
+- Rewritten in TypeScript
 
 ## [0.3.1] - 2018-07-01
 
@@ -18,7 +18,7 @@
 
 ### Changed
 
-* Use native `EventTarget` instead of a shim
+- Use native `EventTarget` instead of a shim
 
 ## [0.2.1] - 2018-03-17
 
@@ -30,18 +30,18 @@ unpublished due to a Git issue.
 
 ### Added
 
-* Cache support
-* `beforeunloadEvent.detail.url`
+- Cache support
+- `beforeunloadEvent.detail.url`
 
 ### Fixed
 
-* fix wrong event target selection (#3)
+- fix wrong event target selection (#3)
 
 ## [0.1.1] - 2018-03-02
 
 ### Fixed
 
-* fix flow errors
+- fix flow errors
 
 ## 0.1.0 - 2018-03-01
 
