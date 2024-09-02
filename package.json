@@ -26,11 +26,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/jsdom": "^16.2.1",
+    "@types/jsdom": "^21.1.7",
     "@types/mocha": "^10.0.7",
     "@types/node": "^13.13.4",
     "cross-env": "^7.0.2",
-    "jsdom": "^16.2.2",
+    "jsdom": "^25.0.0",
     "mocha": "^10.7.3",
     "oxlint": "^0.9.1",
     "prettier": "^3.3.3",
