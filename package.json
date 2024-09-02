@@ -17,8 +17,8 @@
     "url": "https://github.com/otariidae/pjax/issues"
   },
   "scripts": {
-    "lint": "run-s lint:eslint lint:prettier",
-    "lint:eslint": "eslint --fix .",
+    "lint": "run-s lint:oxlint lint:prettier",
+    "lint:oxlint": "oxlint --fix .",
     "lint:prettier": "prettier --write .",
     "test": "mocha -r ts-node/register test/*.ts",
     "prebuild": "rm -rf dist",
@@ -29,14 +29,11 @@
     "@types/jsdom": "^16.2.1",
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.13.4",
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
     "cross-env": "^7.0.2",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
     "jsdom": "^16.2.2",
     "mocha": "^9.1.1",
     "npm-run-all": "^4.1.5",
+    "oxlint": "^0.9.1",
     "prettier": "^2.4.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
