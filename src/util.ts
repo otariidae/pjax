@@ -32,7 +32,7 @@ export const dehashURL = (url: URLLike): string =>
 export const createEqualElement = (element: Element): Element => {
   const copy = document.createElementNS(
     element.namespaceURI || null,
-    element.tagName.toLowerCase()
+    element.tagName.toLowerCase(),
   );
   const attrs = Array.from(element.attributes);
   for (const attr of attrs) {

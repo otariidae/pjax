@@ -34,7 +34,7 @@ export default class PJAX extends EventTarget {
       () => {
         this.onPopState();
       },
-      false
+      false,
     );
   }
   initTargetHandler(): void {
@@ -45,7 +45,7 @@ export default class PJAX extends EventTarget {
         (e) => {
           this.onAnchorClick(e);
         },
-        false
+        false,
       );
     }
   }
@@ -65,7 +65,7 @@ export default class PJAX extends EventTarget {
         detail: {
           url: url,
         },
-      })
+      }),
     );
 
     if (canceled) {
@@ -73,7 +73,7 @@ export default class PJAX extends EventTarget {
     }
 
     const newDocument = (await this.loadDocument(url)).cloneNode(
-      true
+      true,
     ) as Document;
 
     const newRoot = newDocument.querySelector(this.area);
@@ -93,7 +93,7 @@ export default class PJAX extends EventTarget {
         detail: {
           document: newDocument,
         },
-      })
+      }),
     );
 
     this.initTargetHandler();

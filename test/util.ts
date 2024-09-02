@@ -13,62 +13,62 @@ describe("isSameOrigin", () => {
     t.ok(
       isSameOrigin(
         new URL("http://www.exemple.com"),
-        new URL("http://www.exemple.com")
-      )
+        new URL("http://www.exemple.com"),
+      ),
     );
   });
   it("defferent subdmain: not same origin", () => {
     t.ok(
       !isSameOrigin(
         new URL("http://www.exemple.com/"),
-        new URL("http://blog.exemple.com/")
-      )
+        new URL("http://blog.exemple.com/"),
+      ),
     );
     t.ok(
       !isSameOrigin(
         new URL("http://www.exemple.com/"),
-        new URL("http://exemple.com/")
-      )
+        new URL("http://exemple.com/"),
+      ),
     );
   });
   it("http vs https: not same origin", () => {
     t.ok(
       !isSameOrigin(
         new URL("http://www.exemple.com/"),
-        new URL("https://www.exemple.com/")
-      )
+        new URL("https://www.exemple.com/"),
+      ),
     );
   });
   it("with hash: same origin", () => {
     t.ok(
       isSameOrigin(
         new URL("http://www.exemple.com/"),
-        new URL("http://www.exemple.com/#anchor")
-      )
+        new URL("http://www.exemple.com/#anchor"),
+      ),
     );
   });
   it("defferent path, but same origin", () => {
     t.ok(
       isSameOrigin(
         new URL("http://www.exemple.com/foo.html"),
-        new URL("http://www.exemple.com/article/bar.html")
-      )
+        new URL("http://www.exemple.com/article/bar.html"),
+      ),
     );
   });
   it("specified 80 port vs unspecfied port: same origin", () => {
     t.ok(
       isSameOrigin(
         new URL("http://www.exemple.com/"),
-        new URL("http://www.exemple.com:80/")
-      )
+        new URL("http://www.exemple.com:80/"),
+      ),
     );
   });
   it("specified 81 port vs unspecfied port: not same origin", () => {
     t.ok(
       !isSameOrigin(
         new URL("http://www.exemple.com/"),
-        new URL("http://www.exemple.com:81/")
-      )
+        new URL("http://www.exemple.com:81/"),
+      ),
     );
   });
 });
@@ -78,32 +78,32 @@ describe("isSamePath", () => {
     t.ok(
       isSamePath(
         new URL("http://www.exemple.com/path/to/index.html"),
-        new URL("http://www.exemple.com/path/to/index.html")
-      )
+        new URL("http://www.exemple.com/path/to/index.html"),
+      ),
     );
   });
   it("defferent origin, but same path", () => {
     t.ok(
       isSamePath(
         new URL("http://www.exemple.net/path/to/index.html"),
-        new URL("http://www.exemple.com/path/to/index.html")
-      )
+        new URL("http://www.exemple.com/path/to/index.html"),
+      ),
     );
   });
   it("not same path", () => {
     t.ok(
       !isSamePath(
         new URL("http://www.exemple.com/path/to/index.html"),
-        new URL("http://www.exemple.com/path/to/not/same/index.html")
-      )
+        new URL("http://www.exemple.com/path/to/not/same/index.html"),
+      ),
     );
   });
   it("not same file", () => {
     t.ok(
       !isSamePath(
         new URL("http://www.exemple.com/path/to/index.html"),
-        new URL("http://www.exemple.com/path/to/about.html")
-      )
+        new URL("http://www.exemple.com/path/to/about.html"),
+      ),
     );
   });
 });
@@ -113,40 +113,40 @@ describe("isSameParams", () => {
     t.ok(
       isSameParams(
         new URL("http://www.example.com/?p=1"),
-        new URL("http://www.example.com/?p=1")
-      )
+        new URL("http://www.example.com/?p=1"),
+      ),
     );
   });
   it("defferent order, but same query", () => {
     t.ok(
       isSameParams(
         new URL("http://www.example.com/?p=1&q=a"),
-        new URL("http://www.example.com/?q=a&p=1")
-      )
+        new URL("http://www.example.com/?q=a&p=1"),
+      ),
     );
   });
   it("not same query", () => {
     t.ok(
       !isSameParams(
         new URL("http://www.example.com/?p=1"),
-        new URL("http://www.example.com/?p=2")
-      )
+        new URL("http://www.example.com/?p=2"),
+      ),
     );
   });
   it("not same length", () => {
     t.ok(
       !isSameParams(
         new URL("http://www.example.com/?p=1"),
-        new URL("http://www.example.com/?p=1&q=a")
-      )
+        new URL("http://www.example.com/?p=1&q=a"),
+      ),
     );
   });
   it("+ and %20 are same", () => {
     t.ok(
       isSameParams(
         new URL("http://www.example.com/?p=1+2"),
-        new URL("http://www.example.com/?p=1%202")
-      )
+        new URL("http://www.example.com/?p=1%202"),
+      ),
     );
   });
 });
