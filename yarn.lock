@@ -183,19 +183,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:^22.5.2":
   version: 22.5.2
   resolution: "@types/node@npm:22.5.2"
   dependencies:
     undici-types: "npm:~6.19.2"
   checksum: 10c0/624a7fd76229eacc6c158eb3b9afd55b811d7f01976c5f92c630d5b9d47047cc218928c343988484a165ac400e5eb6fe70ea300fc7242deeb0e920c7724290f6
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^13.13.4":
-  version: 13.13.4
-  resolution: "@types/node@npm:13.13.4"
-  checksum: 10c0/d8e5c8498a74e23dbbf34a9f523e63a1f7b2df0136c6a25b2582bac3578e9b4ec760e0fb9ad4597c0ff8b632edc29e6780b4e7849244b683f69cf7fa3edefa0c
   languageName: node
   linkType: hard
 
@@ -1028,7 +1021,7 @@ __metadata:
   dependencies:
     "@types/jsdom": "npm:^21.1.7"
     "@types/mocha": "npm:^10.0.7"
-    "@types/node": "npm:^13.13.4"
+    "@types/node": "npm:^22.5.2"
     cross-env: "npm:^7.0.2"
     jsdom: "npm:^25.0.0"
     mocha: "npm:^10.7.3"
