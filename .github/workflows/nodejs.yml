@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: corepack use
+      - run: corepack install
       - run: yarn install --pure-lockfile
       - run: npm run build
       - run: npm test
