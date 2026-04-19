@@ -1,50 +1,21 @@
-import {
-  isSameOrigin,
-  isSamePath,
-  isSameParams,
-  dehashURL,
-  createEqualElement,
-} from "../src/util";
+import { isSameOrigin, isSamePath, isSameParams, dehashURL, createEqualElement } from "../src/util";
 import { strict as t } from "assert";
 import { JSDOM } from "jsdom";
 
 describe("isSameOrigin", () => {
   it("same origin", () => {
-    t.ok(
-      isSameOrigin(
-        new URL("http://www.exemple.com"),
-        new URL("http://www.exemple.com"),
-      ),
-    );
+    t.ok(isSameOrigin(new URL("http://www.exemple.com"), new URL("http://www.exemple.com")));
   });
   it("defferent subdmain: not same origin", () => {
-    t.ok(
-      !isSameOrigin(
-        new URL("http://www.exemple.com/"),
-        new URL("http://blog.exemple.com/"),
-      ),
-    );
-    t.ok(
-      !isSameOrigin(
-        new URL("http://www.exemple.com/"),
-        new URL("http://exemple.com/"),
-      ),
-    );
+    t.ok(!isSameOrigin(new URL("http://www.exemple.com/"), new URL("http://blog.exemple.com/")));
+    t.ok(!isSameOrigin(new URL("http://www.exemple.com/"), new URL("http://exemple.com/")));
   });
   it("http vs https: not same origin", () => {
-    t.ok(
-      !isSameOrigin(
-        new URL("http://www.exemple.com/"),
-        new URL("https://www.exemple.com/"),
-      ),
-    );
+    t.ok(!isSameOrigin(new URL("http://www.exemple.com/"), new URL("https://www.exemple.com/")));
   });
   it("with hash: same origin", () => {
     t.ok(
-      isSameOrigin(
-        new URL("http://www.exemple.com/"),
-        new URL("http://www.exemple.com/#anchor"),
-      ),
+      isSameOrigin(new URL("http://www.exemple.com/"), new URL("http://www.exemple.com/#anchor")),
     );
   });
   it("defferent path, but same origin", () => {
@@ -56,20 +27,10 @@ describe("isSameOrigin", () => {
     );
   });
   it("specified 80 port vs unspecfied port: same origin", () => {
-    t.ok(
-      isSameOrigin(
-        new URL("http://www.exemple.com/"),
-        new URL("http://www.exemple.com:80/"),
-      ),
-    );
+    t.ok(isSameOrigin(new URL("http://www.exemple.com/"), new URL("http://www.exemple.com:80/")));
   });
   it("specified 81 port vs unspecfied port: not same origin", () => {
-    t.ok(
-      !isSameOrigin(
-        new URL("http://www.exemple.com/"),
-        new URL("http://www.exemple.com:81/"),
-      ),
-    );
+    t.ok(!isSameOrigin(new URL("http://www.exemple.com/"), new URL("http://www.exemple.com:81/")));
   });
 });
 
@@ -111,10 +72,7 @@ describe("isSamePath", () => {
 describe("isSameParams", () => {
   it("same query", () => {
     t.ok(
-      isSameParams(
-        new URL("http://www.example.com/?p=1"),
-        new URL("http://www.example.com/?p=1"),
-      ),
+      isSameParams(new URL("http://www.example.com/?p=1"), new URL("http://www.example.com/?p=1")),
     );
   });
   it("defferent order, but same query", () => {
@@ -127,10 +85,7 @@ describe("isSameParams", () => {
   });
   it("not same query", () => {
     t.ok(
-      !isSameParams(
-        new URL("http://www.example.com/?p=1"),
-        new URL("http://www.example.com/?p=2"),
-      ),
+      !isSameParams(new URL("http://www.example.com/?p=1"), new URL("http://www.example.com/?p=2")),
     );
   });
   it("not same length", () => {
