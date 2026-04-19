@@ -1,10 +1,8 @@
 type URLLike = HTMLAnchorElement | URL | Location;
 
-export const isSameOrigin = (a: URLLike, b: URLLike): boolean =>
-  a.origin === b.origin;
+export const isSameOrigin = (a: URLLike, b: URLLike): boolean => a.origin === b.origin;
 
-export const isSamePath = (a: URLLike, b: URLLike): boolean =>
-  a.pathname === b.pathname;
+export const isSamePath = (a: URLLike, b: URLLike): boolean => a.pathname === b.pathname;
 
 export const isSameParams = (a: URLLike, b: URLLike): boolean => {
   const aURLParams = new URLSearchParams(a.search);
@@ -16,8 +14,7 @@ export const isSameParams = (a: URLLike, b: URLLike): boolean => {
   return aURLParams.toString() === bURLParams.toString();
 };
 
-export const isModifiedClick = (e: MouseEvent): boolean =>
-  e.shiftKey || e.ctrlKey || e.altKey;
+export const isModifiedClick = (e: MouseEvent): boolean => e.shiftKey || e.ctrlKey || e.altKey;
 
 export const fetchHTML = async (url: string): Promise<Document> => {
   const html = await fetch(url).then((res) => res.text());
@@ -25,8 +22,7 @@ export const fetchHTML = async (url: string): Promise<Document> => {
   return parser.parseFromString(html, "text/html");
 };
 
-export const dehashURL = (url: URLLike): string =>
-  url.origin + url.pathname + url.search;
+export const dehashURL = (url: URLLike): string => url.origin + url.pathname + url.search;
 
 // Ref: https://dom.spec.whatwg.org/#concept-node-equals
 export const createEqualElement = (element: Element): Element => {

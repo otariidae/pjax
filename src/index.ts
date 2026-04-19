@@ -72,9 +72,7 @@ export default class PJAX extends EventTarget {
       return;
     }
 
-    const newDocument = (await this.loadDocument(url)).cloneNode(
-      true,
-    ) as Document;
+    const newDocument = (await this.loadDocument(url)).cloneNode(true) as Document;
 
     const newRoot = newDocument.querySelector(this.area);
 

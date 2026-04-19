@@ -1,25 +1,25 @@
 {
   "name": "little-pjax",
-  "description": "A simple, small and modern implementation of pjax",
   "version": "0.4.0",
-  "author": "otariidae",
-  "main": "dist/cjs/index.js",
-  "files": [
-    "dist"
-  ],
-  "license": "CC0-1.0",
+  "description": "A simple, small and modern implementation of pjax",
   "homepage": "https://github.com/otariidae/pjax",
+  "bugs": {
+    "url": "https://github.com/otariidae/pjax/issues"
+  },
+  "license": "CC0-1.0",
+  "author": "otariidae",
   "repository": {
     "type": "git",
     "url": "https://github.com/otariidae/pjax.git"
   },
-  "bugs": {
-    "url": "https://github.com/otariidae/pjax/issues"
-  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/cjs/index.js",
   "scripts": {
-    "lint": "npm run lint:oxlint && npm run lint:prettier",
+    "lint": "npm run lint:oxlint && npm run lint:oxfmt",
     "lint:oxlint": "oxlint --fix .",
-    "lint:prettier": "prettier --write .",
+    "lint:oxfmt": "oxfmt --write .",
     "test": "mocha -r ts-node/register test/*.ts",
     "prebuild": "rm -rf dist",
     "build": "tsc"
@@ -31,8 +31,8 @@
     "cross-env": "^7.0.2",
     "jsdom": "^25.0.0",
     "mocha": "^10.7.3",
+    "oxfmt": "^0.45.0",
     "oxlint": "^1.5.0",
-    "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },
